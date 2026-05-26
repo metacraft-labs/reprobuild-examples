@@ -1,0 +1,33 @@
+# Build output that may appear inside an example dir during local
+# verification. Per-language conventions vary; this is a superset.
+build/
+dist/
+target/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.obj
+.repro/
+.reprobuild/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+nimcache/
+.nimcache/
+*.gem
+.bundle/
+Gemfile.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Cargo.lock
+.gradle/
+.idea/
+.vscode/
