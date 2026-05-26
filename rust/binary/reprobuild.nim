@@ -8,9 +8,10 @@
 
 import repro_project_dsl
 
-package rustBinaryExample:
+package rust_binary_example:
   uses:
     "rust >=1.80 <2.0"
     "cargo >=1.80 <2.0"
 
-  executable rustBinaryExample
+  executable rust_binary_example:
+    discard
