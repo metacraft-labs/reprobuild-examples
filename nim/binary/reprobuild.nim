@@ -12,4 +12,5 @@ package nimBinaryExample:
   uses:
     "nim >=2.2 <3.0"
 
-  executable nimBinaryExample
+  executable nim_binary_example:
+    discard
