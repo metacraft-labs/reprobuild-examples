@@ -12,4 +12,5 @@ package goBinaryExample:
   uses:
     "go >=1.22 <2.0"
 
-  executable goBinaryExample
+  executable go_binary_example:
+    discard
