@@ -1,13 +1,18 @@
 ## Minimal C static library built via a hand-written Makefile.
 ##
-## No `build:` block. NOTE: the C/C++-make convention's Mode A is not
-## yet implemented; the standard provider currently emits a
-## ``no-convention-matched`` diagnostic for this layout. The DSL
-## currently has no ``library <n> kind: static`` syntax — the kind is
-## documented in the convention spec
+## No `build:` block. The M17 C/C++-make convention recognises this
+## layout and emits per-source ``gcc -c`` + ``ar rcs`` actions directly,
+## producing ``.repro/build/greet/libgreet.a``. The Makefile sits
+## alongside as a documentation artifact.
+##
+## The DSL currently has no ``library <n> kind: static`` syntax — the
+## kind is documented in the convention spec
 ## (../../../reprobuild-specs/Language-Conventions/C-Cpp-Make.md
-## §"Project member types") and will be modelled when the DSL grows
-## the parameter. Until then the member is a plain ``library greet``.
+## §"Project member types") and the M17 convention defaults plain
+## ``library greet`` to ``kind: static``; shared/both is a follow-up
+## once the DSL threads ``kind:`` through to C library members.
+##
+## See Standard-Provider-Implementation.milestones.org §M17.
 
 import repro_project_dsl
 
