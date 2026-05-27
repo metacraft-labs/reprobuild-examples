@@ -1,14 +1,15 @@
 ## Go multi-binary example. Two executables under ``cmd/<name>/``
 ## sharing the same module.
 ##
-## No `build:` block. NOTE: the M5 Go convention's current
-## ``recognize`` only matches root-``main.go`` layouts; this fixture
-## falls through to crude mode until the spec's outstanding
-## ``cmd/<name>/main.go`` walk lands. See
+## No `build:` block. The M14 Go convention enumerates every
+## ``package main`` reported by ``go list -deps`` and emits one
+## (importcfg.link, link) pair per binary; the binary basename is the
+## last path segment of each main package's import path
+## (``cmd/alpha`` → ``alpha``, ``cmd/beta`` → ``beta``). See
 ## ../../../reprobuild-specs/Language-Conventions/Go.md §"Project
 ## member types" + §"Recognition" and
 ## ../../../reprobuild-specs/Standard-Provider-Implementation.milestones.org
-## §M5 outstanding tasks.
+## §M14.
 
 import repro_project_dsl
 
