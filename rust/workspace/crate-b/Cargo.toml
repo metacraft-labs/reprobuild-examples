@@ -1,0 +1,12 @@
+[package]
+name = "crate-b"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+crate-a = { path = "../crate-a" }
+
+[[bin]]
+name = "crate_b"
+path = "src/main.rs"

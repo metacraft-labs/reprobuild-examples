@@ -1,0 +1,9 @@
+[package]
+name = "crate-a"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[lib]
+name = "crate_a"
+path = "src/lib.rs"

@@ -1,0 +1,9 @@
+[package]
+name = "rust-library-with-tests-example"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+name = "rust_library_with_tests_example"
+path = "src/lib.rs"

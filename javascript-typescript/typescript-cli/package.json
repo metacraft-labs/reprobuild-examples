@@ -1,0 +1,14 @@
+{
+  "name": "typescript-cli-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "typescript-cli-example": "./dist/bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "tsx src/bin/cli.ts"
+  },
+  "files": ["dist"]
+}
