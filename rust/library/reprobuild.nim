@@ -2,7 +2,8 @@
 ##
 ## No `build:` block — the engine dispatches to
 ## `repro-standard-provider` which derives the build graph from Cargo's
-## conventions (Cargo.toml + src/lib.rs).
+## conventions (Cargo.toml + src/lib.rs). Post-M13 the convention emits
+## a metadata + link rustc pair producing ``librust_library_example-<hash>.rlib``.
 ##
 ## See ../../../reprobuild-specs/Language-Conventions/Rust.md.
 
