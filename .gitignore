@@ -40,6 +40,14 @@ Cargo.lock
 # directory and the fixture loses its entry point.
 !javascript-typescript/typescript-cli/src/bin/
 !javascript-typescript/typescript-cli/src/bin/**
+# M21 typescript-cli fixture: the JS/TS convention's A1 ``npm ci``
+# action requires a committed ``package-lock.json`` for reproducibility
+# (npm ci refuses to run without the lockfile). The global
+# ``package-lock.json`` ignore above is the right default for app
+# fixtures whose convention falls back to ``npx --yes`` on-demand; the
+# typescript-cli fixture deliberately opts into the A1 path so the
+# lockfile must be tracked.
+!javascript-typescript/typescript-cli/package-lock.json
 .gradle/
 .idea/
 .vscode/
