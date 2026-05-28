@@ -5,6 +5,8 @@
 #
 # Engine version: 0.1.0
 # Scanner schema: v1
-# Targets scanned: 1 (0 with edges, 1 leaves)
+# Targets scanned: 2 (1 with edges, 1 leaves)
 
-# (no inter-package dep edges discovered)
+# src/hello.nim:7: import greet
+depends_on mode3PilotHello: mode3PilotGreet
+
