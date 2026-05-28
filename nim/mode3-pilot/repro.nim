@@ -16,6 +16,14 @@
 ##   * The scanner reads `repro.scanned-deps.nim` (machine-authored
 ##     via `repro deps refresh`) at the bottom of this file.
 ##
+## The Nim convention's engine-consumption pass turns the
+## `depends_on mode3PilotHello: mode3PilotGreet` edge into a real
+## action-graph edge: `hello`'s `gcc -o hello.exe` link action declares
+## the greet package's `libgreet.a` static archive as both an explicit
+## input AND a positional argv token, and depends on the greet
+## package's `ar rcs libgreet.a` action id. The engine sequences the
+## archive build strictly before the executable link.
+##
 ## The two-package shape exercises the marker-collision fix landed in
 ## `libs/repro_project_dsl/src/repro_project_dsl/macros_a.nim`: prior
 ## to that fix, two `package` blocks sharing a project file caused a
