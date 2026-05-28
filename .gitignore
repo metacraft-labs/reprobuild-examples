@@ -34,6 +34,12 @@ Cargo.lock
 # ``Cargo.lock`` ignore above would force the fixture maintainer to
 # ``git add -f`` on every lockfile bump, which silently rots.
 !rust/binary-with-build-rs/Cargo.lock
+# M23 binary-with-crates-io fixture: same crude path as the M6 build-rs
+# fixture (``cargo build --release --locked --offline``), so the
+# lockfile MUST be committed for reproducibility. The Mode B fallback
+# resolves the libc dep against the host CARGO_HOME registry but
+# refuses to run without the locked Cargo.lock.
+!rust/binary-with-crates-io/Cargo.lock
 # M8 typescript-cli fixture: the JS/TS convention spec places CLI
 # entry points at ``src/bin/<name>.ts`` (committed source). Without
 # this negation the global ``bin/`` ignore above swallows the

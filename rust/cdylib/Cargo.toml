@@ -1,0 +1,10 @@
+[package]
+name = "rust-cdylib-example"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+name = "rust_cdylib_example"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
