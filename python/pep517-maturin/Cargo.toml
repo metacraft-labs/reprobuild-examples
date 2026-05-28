@@ -1,0 +1,23 @@
+[package]
+name = "python_pep517_maturin_example"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+# The library name maturin asks PyO3 to register MUST match the
+# Python module name (``module-name`` in pyproject.toml). Hyphens
+# aren't allowed in either; using underscores throughout.
+name = "python_pep517_maturin_example"
+# ``cdylib`` so the Rust compiler emits the platform's shared-library
+# format (``.pyd`` on Windows / ``.so`` elsewhere) that the Python
+# import machinery can load.
+crate-type = ["cdylib"]
+
+[dependencies]
+# pyo3 is the de-facto Rust binding for CPython's C API. The
+# ``extension-module`` feature tells pyo3 to skip linking against the
+# Python library at build time (the symbols are resolved at import
+# time from the host interpreter) — this is what every modern
+# maturin-based extension does on every platform.
+pyo3 = { version = "0.22", features = ["extension-module"] }

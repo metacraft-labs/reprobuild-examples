@@ -1,0 +1,18 @@
+[project]
+name = "python-pep517-maturin-example"
+version = "0.1.0"
+description = "Minimal maturin (PyO3) example — routes through M24 Mode B fallback"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+# Tell maturin where the Rust crate lives (default is the project root).
+# The library name in Cargo.toml MUST match this module name so the
+# produced ``.pyd`` / ``.so`` lands at ``site-packages/<module>.<ABI>``.
+module-name = "python_pep517_maturin_example"
+# Skip the auditwheel-equivalent stage on Windows — vendoring native
+# deps is out of scope for this minimal fixture.
+strip = true
