@@ -1,0 +1,8 @@
+# Build outputs
+.repro/
+
+# M36 synthesised per-cgo-member go.mod (emitted by go-direct at build
+# time so modern Go's mandatory module context is satisfied; lives in
+# the source dir so Mode 3 recognise stays intact, but it's a build
+# artifact and must NOT be committed).
+calc/go.mod
