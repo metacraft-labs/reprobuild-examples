@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Minimal self-contained SDK-style csproj for the M42
+    ``csharp-dotnet/hello-binary`` fixture. Pinning notes:
+
+      * ``Sdk="Microsoft.NET.Sdk"`` is the SDK-style project shape —
+        the .NET SDK driver picks up MSBuild targets, default
+        compiler options, and the implicit ``Microsoft.NETCore.App``
+        framework reference automatically.
+      * ``<OutputType>Exe</OutputType>`` plus the single Program.cs
+        with top-level statements produce a self-launching .exe at
+        ``bin/Release/net8.0/hello.exe`` (the M42 convention's
+        predicted output path).
+      * ``<TargetFramework>net8.0</TargetFramework>`` pins the runtime
+        to .NET 8 LTS so the build is reproducible across hosts that
+        ship a newer SDK. ``net8.0`` framework references are
+        included with every .NET 8.x+ SDK; the M42 review host runs
+        SDK 9.0 which carries the net8.0 framework pack by default.
+      * ``<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>``
+        instructs ``dotnet restore`` to maintain a
+        ``packages.lock.json`` next to the csproj — the M42 hard
+        precondition for the offline-build guarantee.
+      * NO ``<AssemblyName>`` override — the convention defaults to
+        the csproj basename without the extension, which is ``hello``.
+      * NO ``<PackageReference>`` items — the fixture uses only the
+        implicit framework reference, so the ``packages.lock.json``
+        stub names zero transitive packages.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <Nullable>enable</Nullable>
+    <!--
+      ``<RollForward>Major</RollForward>`` instructs the apphost to
+      accept any installed runtime whose major version is >= the
+      TargetFramework's (i.e. an 8.0-targeted .exe runs on a host
+      that ships only the 9.0 runtime). Without this the apphost
+      refuses to launch with "You must install .NET to run this
+      application" — fatal for the M9 harness, which probes a
+      cross-section of dev hosts where the exact 8.0 runtime may
+      not be installed even if the SDK is. M42 review host runs
+      .NET SDK 9.0.310 with only the 9.0 runtime pack; this knob
+      makes the fixture runnable there.
+    -->
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+</Project>
