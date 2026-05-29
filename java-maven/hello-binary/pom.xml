@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Minimal self-contained Maven pom for the M40 ``java-maven/hello-binary``
+  fixture. Pinning notes:
+
+    * ``<modelVersion>`` 4.0.0 is the only model Maven 3.x supports.
+    * ``<artifactId>hello</artifactId>`` and ``<version>1.0</version>``
+      combine into ``target/hello-1.0.jar`` — the path the M40
+      convention predicts and the validation script greps for.
+    * ``<maven.compiler.source>`` / ``<maven.compiler.target>`` are pinned
+      to 21 so the build is reproducible across hosts that ship a newer
+      JDK. The fixture's Hello.java uses no language features beyond
+      Java 8, so the source level is conservative for compatibility.
+    * NO ``<dependencies>`` block — the fixture's Hello.java imports
+      nothing beyond ``java.lang`` (stdlib). The Maven build only
+      pulls plugin jars from ``~/.m2/repository/``; those land there
+      after a single online ``mvn package`` run on any host that has
+      ever executed Maven. The ``mvn dependency:go-offline`` warm step
+      is a no-op for this fixture but is documented in the convention
+      module + this file so the pattern is visible.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>hello</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.example.Hello</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
