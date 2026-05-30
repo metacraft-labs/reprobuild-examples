@@ -1,0 +1,19 @@
+--  adalib/src/lib.ads — M58 Mode 3 Ada library spec for
+--  ``binary-with-library``.
+--
+--  The ``Lib`` package exposes ``Ada_Add`` — a pure, no-elaboration
+--  function consumed by both the sibling Ada executable AND (in the
+--  cross-language fixtures) the C++ ``cppapp`` reverse-direction
+--  binary. The ``pragma Export (C, ...)`` directive forces a C-ABI
+--  symbol named exactly ``ada_add`` so a hand-written C ``extern``
+--  declaration resolves directly against the archive.
+--
+--  The M58 honest-scope cut: this routine performs no I/O, no
+--  exception raising, and no controlled-type / tagged-type ops — so
+--  no GNAT runtime elaboration is required and no ``adainit()`` /
+--  ``adafinal()`` bracket calls are needed at the consumer side.
+
+package Lib is
+   function Ada_Add (A : Integer; B : Integer) return Integer;
+   pragma Export (C, Ada_Add, "ada_add");
+end Lib;
