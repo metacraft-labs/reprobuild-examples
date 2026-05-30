@@ -1,0 +1,20 @@
+cabal-version:      2.0
+name:               hello
+version:            1.0
+synopsis:           M55 haskell-cabal/hello-binary fixture
+description:        Minimal Haskell executable for the M55 Tier 2b
+                    standard-provider haskell-cabal convention. Depends
+                    only on ``base`` (GHC stdlib) so the build is fully
+                    offline-mode-compatible without any cabal-store
+                    warm step.
+license:            BSD-3-Clause
+author:             reprobuild
+maintainer:         reprobuild@example.invalid
+build-type:         Simple
+
+executable hello
+  main-is:          Main.hs
+  hs-source-dirs:   app
+  build-depends:    base >=4.14 && <5
+  default-language: Haskell2010
+  ghc-options:      -O2
