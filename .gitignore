@@ -1,6 +1,7 @@
 # Build output that may appear inside an example dir during local
 # verification. Per-language conventions vary; this is a superset.
 build/
+_build/
 dist/
 target/
 bin/

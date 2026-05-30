@@ -1,0 +1,20 @@
+%% M61 erlang-rebar3/hello-binary fixture: OTP application descriptor.
+%%
+%% Erlang term — the ``.app.src`` template rebar3 expands into a real
+%% ``.app`` file under ``_build/default/lib/hello/ebin/hello.app`` at
+%% compile time. Declares the minimal OTP application metadata that
+%% rebar3 + ``escriptize`` need to bundle the escript.
+
+{application, hello, [
+    {description, "M61 reprobuild erlang-rebar3 fixture"},
+    {vsn, "1.0.0"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {env, []},
+    {modules, []},
+    {licenses, ["BSD-3-Clause"]},
+    {links, []}
+]}.
