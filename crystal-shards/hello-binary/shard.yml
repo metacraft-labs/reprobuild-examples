@@ -1,0 +1,20 @@
+name: hello
+version: 1.0.0
+
+authors:
+  - reprobuild <reprobuild@example.invalid>
+
+description: |
+  M60 crystal-shards/hello-binary fixture. Minimal Crystal executable
+  built via the Tier 2b standard-provider ``crystal`` convention in
+  Mode 2 (shards-managed). Depends only on Crystal's stdlib so the
+  build is fully offline-mode-compatible without any shards-store
+  warm step.
+
+targets:
+  hello:
+    main: src/hello.cr
+
+crystal: ">= 1.0.0"
+
+license: BSD-3-Clause
