@@ -1,0 +1,15 @@
+# M56 ruby-bundler/hello-binary fixture: Bundler dependency manifest.
+#
+# Declares the canonical ``https://rubygems.org`` source and pins the
+# Ruby interpreter version range. Zero external gem dependencies so
+# ``bundle install --deployment --local`` is effectively a no-op — the
+# M56 fixture exercises the convention's recognise + emit path
+# end-to-end without requiring a populated gem cache.
+#
+# Real-world projects pulling external gems should populate
+# ``vendor/cache/`` once via ``bundle package`` with network access
+# before invoking the convention.
+
+source 'https://rubygems.org'
+
+ruby '>= 3.0'
