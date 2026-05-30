@@ -1,0 +1,14 @@
+{
+    "name": "metacraft-labs/php-composer-hello-binary",
+    "description": "M57 php-composer/hello-binary fixture: zero-dependency app-style PHP project exercising the Tier 2b php-composer convention.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.0"
+        }
+    }
+}
