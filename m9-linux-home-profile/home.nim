@@ -23,35 +23,33 @@
 ##      ``LinuxDefaultChain = @[cakNix, cakBuiltin, cakPath]`` order
 ##      and classifies each package by its terminating outcome.
 ##
-## **Linux catalog reality (per the M9 outstanding-task list):** as of
-## the M9 landing, NO ``packages/<tool>.nim`` carries a ``poLinux``
-## platform slice — every M67/M68 harvest pulled from Scoop, which is
-## Windows-only. So on Linux ``cakBuiltin`` returns
+## **Linux catalog reality (post-M9.5):** the M9.5 milestone added
+## ``poLinux`` platform slices to 15 catalog files, including every
+## tool listed in this reference profile EXCEPT ``git``. On Linux
+## ``cakBuiltin`` now resolves cmake / ninja / gh / just / nim / ghc /
+## cabal / crystal directly via the harvested Linux URLs. ``git`` on
+## Linux is handled via the M65 chain's cakNix arm — operators
+## reference it as ``nix:git`` in their home profile per the
+## 2026-06-01 "cakNix is the Linux story" architectural decision
+## (see ``Realize-Closure-And-Catalog-Expansion.milestones.org``,
+## "Architectural decision (2026-06-01)" subsection of Phase 5).
+## reprobuild explicitly does NOT reimplement apt/dnf/pacman; Nix
+## already solves that closure problem and cakBuiltin Linux is
+## scoped to tools that ship standalone Linux binaries.
+##
+## **Pre-M9.5 status (historical):** as of the M9 landing, NO
+## ``packages/<tool>.nim`` carried a ``poLinux`` platform slice —
+## every M67/M68 harvest pulled from Scoop, which is Windows-only.
+## So on Linux ``cakBuiltin`` returned
 ## ``csoSchemaError (brePlatformNotSupported)`` for every tool listed
-## here; the chain falls through to ``cakPath``.
+## here; the chain fell through to ``cakPath``.
 ##
 ## The end-to-end LIVE flow that the harness's PASS-criteria require
 ## (cabal v2-build produces ``hello`` on Linux; crystal build produces
-## ``hello`` on Linux) needs ONE of the following to happen first:
-##
-##   * A Linux harvester pass adds ``poLinux`` slices to each tool's
-##     catalog (e.g. downloads.haskell.org publishes Linux ghc tarballs
-##     and crystal-lang/crystal ships a ``linux-x86_64.tar.gz`` asset).
-##     The M67/M68 harvester machinery already supports multiple
-##     platform slices per ``VersionedProvisioning``; the work is
-##     mechanical-but-deferred. Tracked as a follow-up campaign.
-##
-##   * OR cakNix becomes the realize path on Linux (the M65 chain
-##     places cakNix FIRST on Linux; the resolver-side stub returns
-##     ``csoAdapterUnavailable`` today, but the M21 realize-side branch
-##     exists and can be wired through. That is parallel-agent
-##     M83-territory and OUT OF SCOPE for M9.
-##
-## Until one of the above lands, the M9 LIVE harness on a vanilla WSL
-## host SKIPs every fixture cleanly (no realize path → tool not on PATH
-## → validate-*.sh exits with the SKIP marker). M9 ships the harness +
-## the resolver-level gate; the PASS criteria graduate when the Linux
-## catalog half lands.
+## ``hello`` on Linux) graduates post-M9.5 via the cakBuiltin Linux
+## URL slices. Tools without a standalone Linux binary (currently
+## just ``git`` from this profile's set) reach the host via the
+## ``nix:<pkg>`` route through the M65 chain.
 ##
 ## DEFERRED tools (catalog entry present, no Linux URL in the slice
 ## set — pending the Linux harvester pass): ghc / cabal / crystal +
