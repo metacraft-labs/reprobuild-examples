@@ -58,3 +58,9 @@ Cargo.lock
 .gradle/
 .idea/
 .vscode/
+
+# The codetracer-nim fork emits per-macro sourcemap JSON next to compiled
+# sources (column-aware tracer). Building an example in place drops these
+# beside its committed sources. Build noise for the fixtures; ignore it.
+macro_sourcemap_*.json
+**/macro_sourcemap_*.json
