@@ -68,7 +68,7 @@ import repro_project_dsl
 
 package addlib:
   uses:
-    "rust"
+    "rustc"
 
   library addlib
 

@@ -44,13 +44,13 @@ import repro_project_dsl
 
 package mathlibPkg:
   uses:
-    "rust"
+    "rustc"
 
   library mathlib
 
 package calcPkg:
   uses:
-    "rust"
+    "rustc"
 
   executable calc:
     discard

@@ -60,7 +60,7 @@ package mathlib:
 
 package calc:
   uses:
-    "rust"
+    "rustc"
 
   executable calc:
     discard
