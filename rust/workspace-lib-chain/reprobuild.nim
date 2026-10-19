@@ -23,7 +23,7 @@ import repro_project_dsl
 
 package rust_workspace_lib_chain_example:
   uses:
-    "rust >=1.80 <2.0"
+    "rustc >=1.80 <2.0"
     "cargo >=1.80 <2.0"
 
   executable crate_c:

@@ -76,7 +76,7 @@ package nimaddlib:
 
 package rustapp:
   uses:
-    "rust"
+    "rustc"
 
   executable rustapp:
     discard
