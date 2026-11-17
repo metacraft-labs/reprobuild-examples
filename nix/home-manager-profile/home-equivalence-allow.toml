@@ -1,0 +1,46 @@
+# Differences between this Home Manager configuration and the profile that
+# `repro home compare` accepts. Each row says why. Every one of them is
+# something Home Manager adds to every configuration by itself; the profile
+# does not declare it, and does not need to.
+
+[[allow]]
+category = "packages"
+status = "only-in-nix"
+id = "man-db"
+reason = "Home Manager's programs.man module, enabled by default, installs it"
+
+[[allow]]
+category = "packages"
+status = "only-in-nix"
+id = "shared-mime-info"
+reason = "Home Manager's xdg.mime module, enabled by default on Linux, installs it"
+
+[[allow]]
+category = "files"
+status = "only-in-nix"
+id = "~/.cache/.keep"
+reason = "Home Manager creates the XDG cache directory with a placeholder file"
+
+[[allow]]
+category = "files"
+status = "only-in-nix"
+id = "~/.local/state/.keep"
+reason = "Home Manager creates the XDG state directory with a placeholder file"
+
+[[allow]]
+category = "files"
+status = "only-in-nix"
+id = "~/.config/environment.d/10-home-manager.conf"
+reason = "Home Manager exports its session variables to systemd user services through this file"
+
+[[allow]]
+category = "environment"
+status = "only-in-nix"
+id = "var:LOCALE_ARCHIVE_2_27"
+reason = "Home Manager sets it on Linux so programs from Nix find their locale archive"
+
+[[allow]]
+category = "services"
+status = "only-in-nix"
+id = "systemd:tray.target"
+reason = "Home Manager defines the tray.target user unit on Linux"

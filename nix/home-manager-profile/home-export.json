@@ -1,0 +1,109 @@
+{
+  "format": "repro.home.export",
+  "schemaVersion": 5,
+  "selection": {
+    "host": "laptop",
+    "hostDeclared": true,
+    "activities": [
+      "default",
+      "develop"
+    ],
+    "unknownActivities": []
+  },
+  "intent": {
+    "name": "example",
+    "activities": [
+      {
+        "name": "default",
+        "body": [
+          {
+            "kind": "packageRef",
+            "name": "jq",
+            "version": ""
+          }
+        ]
+      },
+      {
+        "name": "develop",
+        "body": [
+          {
+            "kind": "packageRef",
+            "name": "fd",
+            "version": ""
+          },
+          {
+            "kind": "whenGuard",
+            "predicate": "linux",
+            "body": [
+              {
+                "kind": "packageRef",
+                "name": "htop",
+                "version": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "desktop",
+        "body": [
+          {
+            "kind": "packageRef",
+            "name": "vscode",
+            "version": ""
+          }
+        ]
+      }
+    ],
+    "configOverrides": [],
+    "hosts": {
+      "laptop": [
+        "default",
+        "develop"
+      ],
+      "mac": [
+        "default",
+        "desktop"
+      ],
+      "server": [
+        "default"
+      ]
+    },
+    "resources": [],
+    "buildActions": [],
+    "adapterPreference": {}
+  },
+  "platforms": {
+    "x86_64-linux": "same",
+    "aarch64-linux": "same",
+    "x86_64-darwin": "same",
+    "aarch64-darwin": "same",
+    "x86_64-windows": "same",
+    "aarch64-windows": "same"
+  },
+  "provenance": {
+    "repro": {
+      "version": "0.2.24",
+      "sourceRevision": "84b459adda91535f0b89424dfc95aa34bfa67a32"
+    },
+    "hostSource": "flag",
+    "profile": {
+      "root": "home.nim",
+      "digest": "04a25f2ac561c5bea4d2471fa0ddac193d9cafa7f80a2ae11c12cc5568e54e41",
+      "inputs": [
+        {
+          "path": "home.nim",
+          "blake3": "996f0ebc87b90fe6316ff2ea933e60323145848f29f844f199d6ca556c10e0e2"
+        }
+      ]
+    },
+    "dataFiles": [],
+    "compile": {
+      "target": "x86_64-linux",
+      "os": "linux",
+      "cpu": "amd64",
+      "defines": [],
+      "probe": {}
+    }
+  }
+}
